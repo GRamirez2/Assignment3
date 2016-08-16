@@ -27,18 +27,23 @@ var	remaining = 15;
 	correctGuess = "";
 	word = "";
 	wordLength = "";
-	dashesH = "";
+	dashesH = [];
 	badChoices = [];/*to be printed on screen as letter already selected*/
+	dash = "";
 	
 // my attempt at makeing dashes from the length of the word array
-	// makeDashes = function(){
-	// 	for (var i = 0; i < handball.length; i++){
+	makeDashes = function(){
+		for (var i = 0; i < handball.length; i++){
 		
-	// 	(handball[i] = "_" + console.log(makeDashes())
-	// 	}
-	// }
+			push.dashesH ("_" = (i))
+			console.log(dashesH)
+			/*(dashesH[i] = handball[i] )*/
+		}
+	}
 
-	// makeDashes();
+makeDashes();
+
+	/*dashesH[0] = '_'*/
 		
 	
 
@@ -47,29 +52,30 @@ var	remaining = 15;
 
 
 
-document.onkeyup = function(event) {/*all JS needs to be in this tag*/
+/*/*document.onkeyup = function(event) {/*all JS needs to be in this tag*/
 
-	document.querySelector("#hangman").innerHTML = handball;
+// 	document.querySelector("#hangman").innerHTML = handball;
 
- var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); 
+//  var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); 
 
-	 for (var i = 0; i < handball.length; i++){
+// 	 for (var i = 0; i < handball.length; i++){
 		
-		if(userGuess == handball[i]){
-				console.log('yes ' + userGuess + ' that letter is in the word');
-				} else {
-					remaining--;console.log(userGuess + " is a wrong choice," + remaining);
-				}	
-}
-			// else {
-			// 		remaining--;console.log(userGuess + " is a wrong choice," + remaining);
-			// 	} --code that works.
-			// else if lose
-			// else if win + next word or end of game
- 	
-}/*end of document.onkeyup, needs to contain everthing in the JS*/
+// 		if(userGuess == handball[i]){
+// 				console.log('yes ' + userGuess + ' that letter is in the word');
+// 				} else {
+// 					remaining--;console.log(userGuess + " is a wrong choice," + remaining);
+// 				}	
+// 		}/*end of loop*/
 
-// This is the end of my working code and the begining of my notes.
+// 			// else {
+// 			// 		remaining--;console.log(userGuess + " is a wrong choice," + remaining);
+// 			// 	} --code that works.
+// 			// else if lose
+// 			// else if win + next word or end of game
+ 	
+// }/*end of document.onkeyup, needs to contain everthing in the JS*/
+
+// // This is the end of my working code and the begining of my notes.
 
 
 
