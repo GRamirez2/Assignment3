@@ -2,6 +2,7 @@
 
 // lis to words
 var handball = ['h','a','n','d','b','a','l','l'];
+var handballBlank = "_ _ _ _ _ _ _ _"
 var canoeing = ['c','a','n','o','e','i','n','g'];
 var dressage = ['d','r','e','s','s','a','g','e'];
 var eventing = ['e','v','e','n','t','i','n','g'];
@@ -31,49 +32,39 @@ var	remaining = 15;
 	badChoices = [];/*to be printed on screen as letter already selected*/
 	dash = "";
 	
-// my attempt at makeing dashes from the length of the word array
-	makeDashes = function(){
-		for (var i = 0; i < handball.length; i++){
-		
-			push.dashesH ("_" = (i))
-			console.log(dashesH)
-			/*(dashesH[i] = handball[i] )*/
-		}
-	}
 
-makeDashes();
-
-	/*dashesH[0] = '_'*/
 		
 	
 
 
 
 
+document.onkeyup = function(event) {/*all JS needs to be in this tag*/
 
+	document.querySelector("#hangman").innerHTML = handballBlank;
 
-/*/*document.onkeyup = function(event) {/*all JS needs to be in this tag*/
+ var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); 
+ var correctIndexes = [];
 
-// 	document.querySelector("#hangman").innerHTML = handball;
-
-//  var userGuess = String.fromCharCode(event.keyCode).toLowerCase(); 
-
-// 	 for (var i = 0; i < handball.length; i++){
+	 for (var i = 0; i < handballBlank.length; i++){
 		
-// 		if(userGuess == handball[i]){
-// 				console.log('yes ' + userGuess + ' that letter is in the word');
-// 				} else {
-// 					remaining--;console.log(userGuess + " is a wrong choice," + remaining);
-// 				}	
-// 		}/*end of loop*/
+		if(userGuess == handball[i]{
+			correctIndexes.push(i);
+			
+			} else {
+				remaining--;console.log(userGuess + " is a wrong choice," + remaining);
+			}	
+		}/*end of loop*/
+}/*end of onkeyup function*/
 
-// 			// else {
-// 			// 		remaining--;console.log(userGuess + " is a wrong choice," + remaining);
-// 			// 	} --code that works.
-// 			// else if lose
-// 			// else if win + next word or end of game
- 	
-// }/*end of document.onkeyup, needs to contain everthing in the JS*/
+
+			// else {
+			// 		remaining--;console.log(userGuess + " is a wrong choice," + remaining);
+			// 	} --code that works.
+			// else if lose
+			// else if win + next word or end of game
+ 
+
 
 // // This is the end of my working code and the begining of my notes.
 

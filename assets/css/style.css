@@ -9,18 +9,19 @@ body {
 
 }
 
-h1{
+#mainTitle{
 	color: blue;
 	font-family: 'Monoton', cursive;
 	margin-top: 40px;
+	font-size: 80px;
 
 	
 }
 
-h2{
+#subTitle{
 	color: blue;
-	font-family: 'Monoton', cursive;
-	font-size: 24px;
+	font-family:'Bungee Shade', cursive;
+	font-size: 28px;
 }
 
 
@@ -40,20 +41,31 @@ h2{
 
 .instructions{
 	
-	padding-left: 375px;
+	padding-left: 10%;
+	padding-top: 2%;
+	font-family: 'Rubik', sans-serif;
 }
 
+#goodBad{
+	margin-top: 10px; 
+ 	
+ 	font-size: 30px;
+ 	font-family: 'Rubik', sans-serif;
 
+}
 
  #hangman{
  	margin-top: 50px; 
  	text-align:center;
  	font-size: 30px;
+ 	font-family: 'Rubik', sans-serif;
  }
 
   .turns{
  	margin-top: 50px; 
  	text-align:center;
+ 	font-size: 30px;
+ 	font-family: 'Rubik', sans-serif;
  	
  }
 
