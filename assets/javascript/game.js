@@ -5,11 +5,13 @@ var wordBank = ['handball','canoeing','dressage','eventing','sailing','trampolin
 var wordToGuess = ""; 
 var wordArray = [];
 var blanks = [];
-var tries = 15 
-var losses = 0
-var wins = 0
+var userGuessHolding = [];
+var counter = 15; 
+var losses = 1000;
+var wins = 0;
 var userGuess = "";
 var badGuesses = [];
+
 
 
 // Begining of Funtions refferenced in Game - this is not where the game starts, that is below all of these functions,
@@ -41,43 +43,68 @@ var restartGame = function(){
           
           	// if letter is in word, compare it to wordtoguess and add it blank array at appropriate index
           blanks.splice(i, 1, userGuess);
-          
+                    
           
           // print the new blanks with the right letter to the screen
           document.querySelector('#hangman').innerHTML = blanks.join('');
 
-        }/*end of if correct letter statement*/
+        	}/*end of if statement*/
+
+
+        };/*end of loop*/
+
+		if(wordToGuess.indexOf(userGuess) !== -1) {
+		counter--;
+		document.querySelector('.guesscounter').innerHTML = counter;
+		}; if(counter = 0){
+			console.log("loose");
+		}
+
+
+      
+        	
 
         	
-        	// This was my first try -wordToGuess.indexOf(userGuess)-same result
-		    else if(userGuess !== wordToGuess[i]){ 
 
-		    	// the tries counter is reduced and the user guess is pushed to the badGuesses array
-		    	tries--; badGuesses.push(userGuess);
+ 
+       
 
-		        // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
-		        document.querySelector('.guesscounter').innerHTML = tries;
-		        document.querySelector('.userguesses').innerHTML = badGuesses;
+
+win();
+
+      
+
+        	
+
+        
+
+        	
+
+	
+
+     }/*End of onkeyup*/  		
+		      
+}/*End of restart game*/
+
+
+      //   	// This was my first try -wordToGuess.indexOf(userGuess)-same result
+		    // if(userGuess !== wordToGuess[i]){ 
+
+		    // 	// the tries counter is reduced and the user guess is pushed to the badGuesses array
+		    // 	tries--; badGuesses.push(userGuess);
+
+		    //     // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
+		    //     document.querySelector('.guesscounter').innerHTML = tries;
+		    //     document.querySelector('.userguesses').innerHTML = badGuesses;
 
 		        
-		      }/*end of else if Statement for a bad guess from the user*/
+		    //   }/*end of else if Statement for a bad guess from the user*/
 
-			}/*end of loop*/
-		      
-		  }/*End of onkeyup*/
 
-		      	// If you completed the word and win
-		if (blanks.length === wordToGuess.length) {
-
-		    wins++; document.querySelector('.wins').innerHTML = "Total Wins: " + wins;/*I wanted to restart game from here but it was going after each try*/
-
-		    // console.log(blanks)
-
-		}/*end of else if for WIN*/
 
 		
 		// Out of turns, loose, message and restart 
-		if (tries <= 0){
+		if (tries = 0){
 
 			losses++;
 			document.querySelector('.guesscounter').innerHTML = "Sorry Charlie you loose.";
@@ -91,7 +118,7 @@ var restartGame = function(){
  
 	
 
-};/*end of restartGame*/
+
 
 
 var wordSelction = function(){
@@ -107,7 +134,7 @@ var wordSelction = function(){
      wordArray.forEach(function() {
       blanks.push('_');
     });
-     console.log(blanks);
+     // console.log(blanks);
 
      // replaces div on screen to underscores for each letter without cammas
      document.querySelector('#hangman').innerHTML = blanks.join('');
@@ -122,7 +149,18 @@ var wordSelction = function(){
 var wordComplete = function(){};
 var wrongLetter = function(){};
 var outOfTurns = function(){};
-var win = function(){};
+var win = function(){
+
+	 // If you completed the word and win
+		
+			if(wordArray.toString() === blanks.toString())	{
+
+		    	wins++; 
+		    	document.querySelector('.wins').innerHTML = "Total Wins: " + wins;/*I wanted to restart game from here but it was going after each try*/
+		    	console.log("prints when passed if statement on a win "+blanks+wordArray)/*this comparison for a win is correct*/
+		    	
+		    }/*end of if for WIN*/
+};
 
 
 // Call start Game begins the Game by changing the screen so the letter marks are revealed.
