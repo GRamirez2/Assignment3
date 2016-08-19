@@ -53,12 +53,14 @@ var restartGame = function(){
 
         };/*end of loop*/
 
-		if(wordToGuess.indexOf(userGuess) !== -1) {
-		counter--;
-		document.querySelector('.guesscounter').innerHTML = counter;
-		}; if(counter = 0){
-			console.log("loose");
-		}
+		
+        // This was an attempt at the wrong guess, but it didnt run at line 57, after the for loop
+		// if(wordToGuess.indexOf(userGuess) !== -1) {
+		// counter--;
+		// document.querySelector('.guesscounter').innerHTML = counter;
+		// }; if(counter = 0){
+		// 	alert("loose");
+		// }
 
 
       
@@ -71,6 +73,7 @@ var restartGame = function(){
 
 
 win();
+wrongLetter();
 
       
 
@@ -87,18 +90,11 @@ win();
 }/*End of restart game*/
 
 
-      //   	// This was my first try -wordToGuess.indexOf(userGuess)-same result
-		    // if(userGuess !== wordToGuess[i]){ 
-
-		    // 	// the tries counter is reduced and the user guess is pushed to the badGuesses array
-		    // 	tries--; badGuesses.push(userGuess);
-
-		    //     // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
-		    //     document.querySelector('.guesscounter').innerHTML = tries;
-		    //     document.querySelector('.userguesses').innerHTML = badGuesses;
+        
 
 		        
-		    //   }/*end of else if Statement for a bad guess from the user*/
+
+		  // else if Statement for a bad guess from the user*/
 
 
 
@@ -147,7 +143,18 @@ var wordSelction = function(){
 
 
 var wordComplete = function(){};
-var wrongLetter = function(){};
+var wrongLetter = function(){
+
+	if(wordToGuess.indexOf(userGuess) !== -1) {
+        counter--;
+        badGuesses.push(userGuess);
+        // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
+		        document.querySelector('.guesscounter').innerHTML = tries;
+		        document.querySelector('.userguesses').innerHTML = badGuesses;console.log(badGuesses)
+      }
+  };
+
+
 var outOfTurns = function(){};
 var win = function(){
 
