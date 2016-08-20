@@ -76,7 +76,7 @@ outOfTurns();
 
 var wordSelction = function(){
 
-
+	
 	// pick a word from the word bank, this most import part so I can reuse the core function of the game
 	wordToGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
     console.log(wordToGuess);
@@ -129,7 +129,7 @@ var outOfTurns = function(){
 		document.querySelector('.loses').innerHTML = "Losses : "+losses;
 		tick = 0;
 		wordSelction();
-		
+
 	}
 };
 var win = function(){
@@ -140,8 +140,13 @@ var win = function(){
 
 		    	wins++; 
 		    	document.querySelector('.wins').innerHTML = "Total Wins: " + wins;/*I wanted to restart game from here but it was going after each try*/
-		    	console.log("prints when passed if statement on a win "+blanks+wordArray)/*this comparison for a win is correct*/
-		    	
+		    	document.querySelector('.guesscounter').innerHTML = (0);
+		    	badGuesses.length = 0;
+
+		    	wordSelction();
+		    
+
+
 		    }/*end of if for WIN*/};/*end of wordarray string*/
 
 	
