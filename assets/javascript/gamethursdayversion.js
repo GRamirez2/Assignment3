@@ -5,13 +5,11 @@ var wordBank = ['handball','canoeing','dressage','eventing','sailing','trampolin
 var wordToGuess = ""; 
 var wordArray = [];
 var blanks = [];
-var userGuessHolding = [];
-var counter;
-var losses = 0;
-var wins = 0;
+var tries = 15 
+var losses = 0
+var wins = 0
 var userGuess = "";
 var badGuesses = [];
-
 
 
 // Begining of Funtions refferenced in Game - this is not where the game starts, that is below all of these functions,
@@ -29,8 +27,6 @@ var restartGame = function(){
 
 	// Replaces the Press any key to being text, selects word, makes an array and print to screen, plus adds message - fancy!
 	wordSelction();
-	counter = 15; 
-
 
 
 	// This key up, the second so far, actually begins the letter guessing start of the game
@@ -45,37 +41,56 @@ var restartGame = function(){
           
           	// if letter is in word, compare it to wordtoguess and add it blank array at appropriate index
           blanks.splice(i, 1, userGuess);
-                    
+          
           
           // print the new blanks with the right letter to the screen
           document.querySelector('#hangman').innerHTML = blanks.join('');
 
-        	}/*end of if statement*/
-        		
+        }/*end of if correct letter statement*/
+
+        	}/*end of loop*/
+		}/*End of onkeyup*/  
+        	
+        	// This was my first try -wordToGuess.indexOf(userGuess)-same result
+		
+
+		// the tries counter is reduced and the user guess is pushed to the badGuesses array
+		tries--; badGuesses.push(userGuess);
 
 
-        };/*end of loop*/
+ // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
+		document.querySelector('.guesscounter').innerHTML = tries;
+		document.querySelector('.userguesses').innerHTML = badGuesses;
+
+		    
+	
+
+		      	// If you completed the word and win
+		if (blanks == wordToGuess) {
+
+		    wins++; document.querySelector('.wins').innerHTML = "Total Wins: " + wins;/*I wanted to restart game from here but it was going after each try*/
+
+		    // console.log(blanks)
+
+		}/*end of else if for WIN*/
 
 		
-        // This was an attempt at the wrong guess, but it didnt run at line 57, after the for loop
-		// if(wordToGuess.indexOf(userGuess) !== -1) {
-		// counter--;
-		// document.querySelector('.guesscounter').innerHTML = counter;
-		// }; if(counter = 0){
-		// 	alert("loose");
-		// }
+		// Out of turns, loose, message and restart 
+		if (tries <= 0){
 
-win();
-wrongLetter(userGuess);
-outOfTurns();
+			losses++;
+			document.querySelector('.guesscounter').innerHTML = "Sorry Charlie you loose.";
 
-     }/*End of onkeyup*/  		
-		      
-}/*End of restart game*/
+		}/*end of if state for out of tries / lose*/
 
 
+		      	 
+		  
+	
+ 
+	
 
-
+};/*end of restartGame*/
 
 
 var wordSelction = function(){
@@ -91,7 +106,7 @@ var wordSelction = function(){
      wordArray.forEach(function() {
       blanks.push('_');
     });
-     // console.log(blanks);
+     console.log(blanks);
 
      // replaces div on screen to underscores for each letter without cammas
      document.querySelector('#hangman').innerHTML = blanks.join('');
@@ -99,45 +114,14 @@ var wordSelction = function(){
      document.querySelector('#message').innerHTML = "Choose Wisely My Friend";
 
 
-
   };/*end of wordSelection*/
 
 
 
 var wordComplete = function(){};
-var wrongLetter = function(userGuess){
-
-	if(wordToGuess.indexOf(userGuess) == -1) {
-        counter--;
-        badGuesses.push(userGuess);console.log(userGuess);
-        // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
-		document.querySelector('.guesscounter').innerHTML = counter;
-		document.querySelector('.userguesses').innerHTML = badGuesses;
-      }
-  };
-
-
-var outOfTurns = function(){
-
-	if (counter = 0){
-
-		console.log("outOfTurns"+counter)
-		document.querySelector('.guesscounter').innerHTML = "Sorry Charlie, you're out of turns, Need to reset the game on key up.";
-	}
-};
-var win = function(){
-
-	 // If you completed the word and win
-		
-			if(wordArray.toString() === blanks.toString())	{
-
-		    	wins++; 
-		    	document.querySelector('.wins').innerHTML = "Total Wins: " + wins;/*I wanted to restart game from here but it was going after each try*/
-		    	console.log("prints when passed if statement on a win "+blanks+wordArray)/*this comparison for a win is correct*/
-		    	
-		    }/*end of if for WIN*/};/*end of wordarray string*/
-
-	
+var wrongLetter = function(){};
+var outOfTurns = function(){};
+var win = function(){};
 
 
 // Call start Game begins the Game by changing the screen so the letter marks are revealed.
