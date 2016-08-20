@@ -6,11 +6,12 @@ var wordToGuess = "";
 var wordArray = [];
 var blanks = [];
 var userGuessHolding = [];
-var counter;
+var counter = 15;
 var losses = 0;
 var wins = 0;
 var userGuess = "";
 var badGuesses = [];
+var tick = 0;
 
 
 
@@ -29,7 +30,7 @@ var restartGame = function(){
 
 	// Replaces the Press any key to being text, selects word, makes an array and print to screen, plus adds message - fancy!
 	wordSelction();
-	counter = 15; 
+	 
 
 
 
@@ -51,6 +52,7 @@ var restartGame = function(){
           document.querySelector('#hangman').innerHTML = blanks.join('');
 
         	}/*end of if statement*/
+        		
         		
 
 
@@ -108,10 +110,10 @@ var wordComplete = function(){};
 var wrongLetter = function(userGuess){
 
 	if(wordToGuess.indexOf(userGuess) == -1) {
-        counter--;
+        tick++
         badGuesses.push(userGuess);console.log(userGuess);
         // this will refresh the conent on the page to show the a reduced tries number and the letter that was wrong
-		document.querySelector('.guesscounter').innerHTML = counter;
+		document.querySelector('.guesscounter').innerHTML = (15-tick);
 		document.querySelector('.userguesses').innerHTML = badGuesses;
       }
   };
