@@ -59,13 +59,7 @@ var restartGame = function(){
         };/*end of loop*/
 
 		
-        // This was an attempt at the wrong guess, but it didnt run at line 57, after the for loop
-		// if(wordToGuess.indexOf(userGuess) !== -1) {
-		// counter--;
-		// document.querySelector('.guesscounter').innerHTML = counter;
-		// }; if(counter = 0){
-		// 	alert("loose");
-		// }
+        
 
 win();
 wrongLetter(userGuess);
@@ -81,6 +75,8 @@ outOfTurns();
 
 
 var wordSelction = function(){
+
+
 	// pick a word from the word bank, this most import part so I can reuse the core function of the game
 	wordToGuess = wordBank[Math.floor(Math.random() * wordBank.length)];
     console.log(wordToGuess);
@@ -99,6 +95,8 @@ var wordSelction = function(){
      document.querySelector('#hangman').innerHTML = blanks.join('');
 
      document.querySelector('#message').innerHTML = "Choose Wisely My Friend";
+
+
 
 
 
@@ -121,10 +119,17 @@ var wrongLetter = function(userGuess){
 
 var outOfTurns = function(){
 
-	if (counter = 0){
+	if (tick == 15){
 
-		console.log("outOfTurns"+counter)
-		document.querySelector('.guesscounter').innerHTML = "Sorry Charlie, you're out of turns, Need to reset the game on key up.";
+		document.querySelector('.guesscounter').innerHTML = (0);
+		document.querySelector('.userguesses').innerHTML = "Sorry Charlie, you need to watch more tv. <br> Press any key to begin again.";
+		badGuesses.length = 0;
+
+		losses++;
+		document.querySelector('.loses').innerHTML = "Losses : "+losses;
+		tick = 0;
+		wordSelction();
+		
 	}
 };
 var win = function(){
